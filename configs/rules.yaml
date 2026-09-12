@@ -1,0 +1,24 @@
+rules:
+  - id: block-destructive-shell
+    tool: run_shell
+    field: cmd
+    type: regex
+    pattern: "(?i)(rm\\s+-rf|drop\\s+table|mkfs|dd\\s+if=)"
+    action: deny
+    reason: "Destructive shell command detected"
+
+  - id: cap-payment-amount
+    tool: make_payment
+    field: amount
+    type: max_threshold
+    threshold: 500
+    action: deny
+    reason: "Payment exceeds maximum allowed threshold ($500)"
+
+  - id: block-sensitive-file-access
+    tool: delete_file
+    field: path
+    type: regex
+    pattern: "(?i)(/etc/passwd|/etc/shadow|\\.env|id_rsa)"
+    action: deny
+    reason: "Attempted deletion of sensitive system or credential files"
