@@ -1,0 +1,16 @@
+FROM golang:1.24-bookworm
+
+# Install basic development utilities
+RUN apt-get update && apt-get install -y git curl sqlite3 && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy go module files if they exist; create a stub go.mod if not (bootstrapping mode)
+COPY . .
+RUN if [ -f go.mod ]; then go mod download; fi
+
+# Install air for live reload — pin to last version compatible with Go 1.24
+RUN go install github.com/air-verse/air@v1.52.3
+
+# Keep container alive for interactive shell or live reloads
+CMD ["tail", "-f", "/dev/null"]

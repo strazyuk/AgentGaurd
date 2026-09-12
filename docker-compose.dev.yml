@@ -1,0 +1,17 @@
+services:
+  sentinel-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: sentinel-dev
+    volumes:
+      - .:/app
+      - go-pkg-cache:/go/pkg/mod
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    stdin_open: true
+    tty: true
+
+volumes:
+  go-pkg-cache:
