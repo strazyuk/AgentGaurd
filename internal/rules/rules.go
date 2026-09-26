@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	// Ensure this matches the module path in your go.mod
-	"github.com/turbok12/AgentGaurd/internal/firewall"
+	"github.com/strazyuk/AuthGaurd/internal/firewall"
 	"gopkg.in/yaml.v3"
 )
 

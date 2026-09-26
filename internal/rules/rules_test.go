@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/turbok12/AgentGaurd/internal/firewall"
-	"github.com/turbok12/AgentGaurd/internal/rules"
+	"github.com/strazyuk/AuthGaurd/internal/firewall"
+	"github.com/strazyuk/AuthGaurd/internal/rules"
 )
 
 func TestEngine_Evaluate(t *testing.T) {
