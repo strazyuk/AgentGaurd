@@ -10,6 +10,8 @@ services:
     ports:
       - "8080:8080"
     working_dir: /app
+    environment:
+      - JEV_AI_API_KEY=${JEV_AI_API_KEY}
     stdin_open: true
     tty: true
 
